@@ -1,0 +1,1007 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Catalytic Potential of TiO₂ Hydrogel for Organic Dye Degradation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #475569;
+            --accent: #0f766e;
+            --muted: #64748b;
+            --background: #fafafa;
+            --surface: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            background-color: var(--background);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid #e2e8f0;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .chemical-formula {
+            font-family: 'Courier New', monospace;
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.85em;
+            vertical-align: super;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            margin: 3rem 0;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .hero-text-overlay {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .data-point {
+            background: var(--surface);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-fixed.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--muted);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .toc-link:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        .toc-link.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .chart-container {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- Mobile Menu Toggle -->
+    <button id="mobile-menu-toggle" class="lg:hidden fixed top-4 left-4 z-[1001] bg-white p-2 rounded-lg shadow-lg">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold text-slate-800 mb-4">Contents</h3>
+        <div class="space-y-1">
+          <a href="#hero" class="toc-link active">Overview</a>
+          <a href="#abstract" class="toc-link">Abstract</a>
+          <a href="#introduction" class="toc-link">Introduction</a>
+          <a href="#experimental" class="toc-link">Experimental</a>
+          <a href="#results" class="toc-link">Results &amp; Discussion</a>
+          <a href="#conclusions" class="toc-link">Conclusions</a>
+          <a href="#acknowledgements" class="toc-link">Acknowledgements</a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-slate-200">
+        <h4 class="text-sm font-medium text-slate-700 mb-3">Key Metrics</h4>
+        <div class="data-point mb-4">
+          <div class="text-2xl font-bold text-teal-700">91%</div>
+          <div class="text-sm text-slate-600">Degradation Efficiency</div>
+        </div>
+        <div class="data-point">
+          <div class="text-lg font-semibold text-teal-700">120 min</div>
+          <div class="text-sm text-slate-600">Treatment Duration</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="min-h-screen flex items-center bg-gradient-to-br from-slate-50 to-slate-100">
+        <div class="container mx-auto px-6 lg:px-12 py-12">
+          <div class="bento-grid">
+            <!-- Main Hero Content -->
+            <div class="space-y-8">
+              <div class="hero-text-overlay p-8 rounded-2xl max-w-4xl">
+                <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl mb-6 leading-tight break-words">
+                  Catalytic Potential of <span class="text-teal-700">TiO₂ Hydrogel</span> for the Chemical Degradation of Organic Dyes
+                </h1>
+                <div class="flex items-center space-x-6 text-sm text-slate-600">
+                  <span class="flex items-center">
+                    <i class="fas fa-flask mr-2"></i>
+                    Institute of Chemical Sciences
+                  </span>
+                  <span class="flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    University of Peshawar, Pakistan
+                  </span>
+                </div>
+              </div>
+
+              <!-- Key Highlights Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="highlight-box p-6 rounded-xl">
+                  <div class="text-3xl font-bold text-teal-700 mb-2">91%</div>
+                  <div class="text-sm text-slate-700">Methyl Blue Degradation</div>
+                </div>
+                <div class="highlight-box p-6 rounded-xl">
+                  <div class="text-3xl font-bold text-teal-700 mb-2">Co-doped</div>
+                  <div class="text-sm text-slate-700">Cobalt Enhanced Catalyst</div>
+                </div>
+                <div class="highlight-box p-6 rounded-xl">
+                  <div class="text-3xl font-bold text-teal-700 mb-2">Ambient</div>
+                  <div class="text-sm text-slate-700">Operating Conditions</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="space-y-6">
+              <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.degruyterbrill.com/c56d1004f91f873ffb51845032010164657de257.jpg" alt="Porous structure of TiO₂ hydrogel catalyst beads" class="w-full h-64 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="TiO2 hydrogel catalyst porous structure" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+                <p class="text-sm text-slate-600 italic">
+                  TiO₂ hydrogel catalyst beads demonstrating porous structure for enhanced surface area and catalytic activity
+                </p>
+              </div>
+
+              <!-- Research Impact -->
+              <div class="bg-gradient-to-r from-teal-50 to-slate-50 p-6 rounded-xl">
+                <h3 class="text-lg font-semibold text-slate-800 mb-3">Research Impact</h3>
+                <ul class="space-y-2 text-sm text-slate-700">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-teal-600 mr-2 mt-1"></i>
+                    Eco-friendly wastewater treatment solution
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-teal-600 mr-2 mt-1"></i>
+                    Cost-effective catalyst immobilization
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-teal-600 mr-2 mt-1"></i>
+                    Enhanced catalytic efficiency via cobalt doping
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Abstract Section -->
+      <section id="abstract" class="py-16 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-3xl font-semibold text-slate-800 mb-8">Abstract</h2>
+            <div class="prose prose-lg max-w-none">
+              <p class="text-lg leading-relaxed text-slate-700 mb-6">
+                The present study investigates the catalytic capabilities of titanium dioxide <span class="chemical-formula">TiO₂</span> hydrogel in the chemical degradation of organic dyes, a significant area of research for environmental remediation. A novel hydrogel matrix, synthesized from carboxymethyl cellulose (CMC), sodium dodecyl sulfate (SDS), and sodium chloride (NaCl), served as the medium for incorporating <span class="chemical-formula">TiO₂</span>.
+              </p>
+              <p class="text-lg leading-relaxed text-slate-700 mb-6">
+                To further enhance the degradation efficiency, the synthesized hydrogel beads were doped with cobalt nitrate. Methyl blue, a commonly used synthetic dye in various industries, was chosen as the model pollutant for this investigation. The degradation process was meticulously monitored using UV-Vis spectroscopy, a standard analytical technique for quantifying dye concentration.
+              </p>
+              <div class="bg-teal-50 border-l-4 border-teal-500 p-6 my-8">
+                <p class="text-lg font-medium text-teal-800">
+                  The results demonstrated a <strong>remarkable 91% degradation of methyl blue</strong>, highlighting the significant catalytic activity of the <span class="chemical-formula">TiO₂</span> hydrogel system.
+                </p>
+              </div>
+              <p class="text-lg leading-relaxed text-slate-700">
+                This high degradation efficiency suggests that the developed <span class="chemical-formula">TiO₂</span> hydrogel system holds considerable promise for applications in wastewater treatment and the removal of hazardous organic dyes from contaminated water sources.
+              </p>
+            </div>
+
+            <!-- Keywords -->
+            <div class="mt-12 p-6 bg-slate-50 rounded-xl">
+              <h3 class="text-lg font-semibold text-slate-800 mb-4">Keywords</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">TiO₂ hydrogel</span>
+                <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">chemical degradation</span>
+                <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">cobalt doping</span>
+                <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">methyl blue</span>
+                <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">UV-Vis spectroscopy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Introduction Section -->
+      <section id="introduction" class="py-16 bg-slate-50">
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-3xl font-semibold text-slate-800 mb-8">Introduction</h2>
+
+            <div class="prose prose-lg max-w-none space-y-6">
+              <p class="text-lg leading-relaxed text-slate-700">
+                Water pollution, particularly the contamination of freshwater resources by synthetic dyes from industrial activities, poses a <strong>severe global environmental challenge</strong>
+                <a href="#ref-1" class="citation-link">[1]</a>
+                <a href="#ref-2" class="citation-link">[2]</a>. Among these dyes, <strong>methyl blue</strong>, an anionic dye, is extensively utilized in the textile and paper industries.
+              </p>
+
+              <div class="bg-white p-6 rounded-xl border border-slate-200 my-8">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Environmental Challenge</h3>
+                <p class="text-slate-700 mb-4">
+                  A major concern with these synthetic dyes is their inherent <strong>resistance to degradation by light, heat, and microbial action</strong>
+                  <a href="#ref-3" class="citation-link">[3]</a>
+                  <a href="#ref-4" class="citation-link">[4]</a>, rendering their removal from aquatic environments difficult using conventional water treatment methodologies.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-2">Traditional Methods Limitations:</h4>
+                    <ul class="text-sm text-slate-600 space-y-1">
+                      <li>• Coagulation &amp; Flocculation</li>
+                      <li>• Reverse Osmosis</li>
+                      <li>• Adsorption Techniques</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-2">Key Drawbacks:</h4>
+                    <ul class="text-sm text-slate-600 space-y-1">
+                      <li>• Incomplete dye removal</li>
+                      <li>• Toxic sludge generation</li>
+                      <li>• High operational costs</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-lg leading-relaxed text-slate-700">
+                Consequently, there has been a significant research focus on developing <strong>advanced chemical degradation techniques</strong> that employ catalysts to effectively break down these persistent organic pollutants into less harmful substances <a href="#ref-5" class="citation-link">[5]</a>
+                <a href="#ref-6" class="citation-link">[6]</a>.
+              </p>
+
+              <!-- TiO₂ Properties -->
+              <div class="bg-gradient-to-r from-blue-50 to-teal-50 p-8 rounded-xl my-8">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Titanium Dioxide (TiO₂) Catalyst</h3>
+                <p class="text-slate-700 mb-4">
+                  <strong>Titanium dioxide (TiO₂)</strong> has emerged as a highly promising metal oxide photocatalyst due to its notable advantages <a href="#ref-7" class="citation-link">[7]</a>
+                  <a href="#ref-8" class="citation-link">[8]</a>:
+                </p>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div class="text-center p-4 bg-white rounded-lg">
+                    <i class="fas fa-leaf text-2xl text-green-600 mb-2"></i>
+                    <div class="font-semibold text-slate-800">Non-toxic</div>
+                    <div class="text-sm text-slate-600">Environmentally safe</div>
+                  </div>
+                  <div class="text-center p-4 bg-white rounded-lg">
+                    <i class="fas fa-shield-alt text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-semibold text-slate-800">Chemically Stable</div>
+                    <div class="text-sm text-slate-600">Long-term performance</div>
+                  </div>
+                  <div class="text-center p-4 bg-white rounded-lg">
+                    <i class="fas fa-cogs text-2xl text-teal-600 mb-2"></i>
+                    <div class="font-semibold text-slate-800">Effective</div>
+                    <div class="text-sm text-slate-600">Degrades pollutants</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hydrogel Innovation -->
+              <p class="text-lg leading-relaxed text-slate-700">
+                However, a significant challenge associated with the use of <span class="chemical-formula">TiO₂</span> nanoparticles in aqueous media is their <strong>tendency to aggregate</strong>. This aggregation reduces the effective surface area available for catalytic reactions <a href="#ref-9" class="citation-link">[9]</a>
+                <a href="#ref-10" class="citation-link">[10]</a>.
+              </p>
+
+              <div class="bg-white p-6 rounded-xl border border-slate-200 my-8">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Innovation: Hydrogel Immobilization</h3>
+                <p class="text-slate-700 mb-4">
+                  To address aggregation and improve catalyst recovery, <strong>immobilization in polymer-based hydrogels</strong> has been developed <a href="#ref-11" class="citation-link">[11]</a>
+                  <a href="#ref-12" class="citation-link">[12]</a>. These hydrogels provide:
+                </p>
+                <div class="space-y-3">
+                  <div class="flex items-start">
+                    <i class="fas fa-network-wired text-teal-600 mr-3 mt-1"></i>
+                    <div>
+                      <strong>Stable 3D network</strong> for catalyst hosting
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-expand-arrows-alt text-teal-600 mr-3 mt-1"></i>
+                    <div>
+                      <strong>Enhanced surface availability</strong> and prevention of aggregation
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-recycle text-teal-600 mr-3 mt-1"></i>
+                    <div>
+                      <strong>Facilitated recovery and reuse</strong> of catalyst
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cobalt Doping Enhancement -->
+              <p class="text-lg leading-relaxed text-slate-700">
+                Furthermore, the catalytic efficiency of <span class="chemical-formula">TiO₂</span> can be significantly enhanced by <strong>doping with transition metals, such as cobalt</strong>. Doping introduces new energy levels within the <span class="chemical-formula">TiO₂</span> bandgap, improving charge separation and modifying surface characteristics <a href="#ref-13" class="citation-link">[13]</a>
+                <a href="#ref-14" class="citation-link">[14]</a>.
+              </p>
+
+              <!-- Research Objective -->
+              <div class="bg-teal-50 border-l-4 border-teal-500 p-6 my-8">
+                <h3 class="text-lg font-semibold text-teal-800 mb-3">Research Objective</h3>
+                <p class="text-teal-700">
+                  In this study, <strong>TiO₂ hydrogel beads, further enhanced by doping with cobalt nitrate</strong>, were prepared and evaluated for their efficacy in the chemical degradation of methyl blue dye, contributing to the development of advanced, efficient, and sustainable catalyst systems for wastewater treatment <a href="#ref-15" class="citation-link">[15]</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Experimental Section -->
+      <section id="experimental" class="py-16 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-3xl font-semibold text-slate-800 mb-8">Experimental</h2>
+
+            <!-- Materials and Reagents -->
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold text-slate-800 mb-6">Materials and Reagents</h3>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-50 p-6 rounded-xl">
+                  <h4 class="font-semibold text-slate-800 mb-4">Primary Chemicals</h4>
+                  <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-center">
+                      <i class="fas fa-flask text-teal-600 mr-2"></i>
+                      <span class="chemical-formula">TiO₂</span> - Titanium dioxide
+                    </li>
+                    <li class="flex items-center">
+                      <i class="fas fa-flask text-teal-600 mr-2"></i>
+                      <span class="chemical-formula">Co(NO₃)₂</span> - Cobalt nitrate
+                    </li>
+                    <li class="flex items-center">
+                      <i class="fas fa-flask text-teal-600 mr-2"></i>
+                      <span class="chemical-formula">NaBH₄</span> - Sodium borohydride
+                    </li>
+                    <li class="flex items-center">
+                      <i class="fas fa-flask text-teal-600 mr-2"></i>
+                      CMC - Carboxymethyl cellulose
+                    </li>
+                  </ul>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl">
+                  <h4 class="font-semibold text-slate-800 mb-4">Supporting Materials</h4>
+                  <ul class="space-y-2 text-slate-700">
+                    <li class="flex items-center">
+                      <i class="fas fa-flask text-teal-600 mr-2"></i>
+                      SDS - Sodium dodecyl sulfate
+                    </li>
+                    <li class="flex items-center">
+                      <i class="fas fa-flask text-teal-600 mr-2"></i>
+                      <span class="chemical-formula">NaCl</span> - Sodium chloride
+                    </li>
+                    <li class="flex items-center">
+                      <i class="fas fa-flask text-teal-600 mr-2"></i>
+                      Methyl blue dye
+                    </li>
+                    <li class="flex items-center">
+                      <i class="fas fa-tint text-blue-600 mr-2"></i>
+                      Distilled water
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Synthesis Procedure -->
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold text-slate-800 mb-6">Synthesis of TiO₂ Hydrogel Beads</h3>
+              <div class="bg-gradient-to-r from-blue-50 to-teal-50 p-8 rounded-xl">
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-4">Step-by-Step Process</h4>
+                    <div class="space-y-4">
+                      <div class="flex items-start">
+                        <div class="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">1</div>
+                        <div>
+                          <strong>Dispersion:</strong> 0.1g <span class="chemical-formula">TiO₂</span> + 0.1g <span class="chemical-formula">Co(NO₃)₂</span> in 20mL distilled water with sonication
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div class="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">2</div>
+                        <div>
+                          <strong>Reduction:</strong> Add small amount of <span class="chemical-formula">NaBH₄</span> to initiate reduction
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div class="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">3</div>
+                        <div>
+                          <strong>Polymer Addition:</strong> Gradually add 0.2g CMC, 0.02g SDS, 4g NaCl under stirring
+                        </div>
+                      </div>
+                      <div class="flex items-start">
+                        <div class="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1">4</div>
+                        <div>
+                          <strong>Formation:</strong> Cast solution into beads and dry at room temperature for 24 hours
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.springernature.com/4d1eb10b7aac6afdc614ddb2d2def249844a6a4e.png" alt="Laboratory synthesis of TiO2 hydrogel catalyst beads" class="w-full h-64 object-cover rounded-lg" size="medium" aspect="wide" style="photo" query="TiO2 hydrogel beads preparation in laboratory" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+                    <p class="text-sm text-slate-600 italic mt-2">
+                      Hydrogel bead formation process in laboratory setting
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dye Solution Preparation -->
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold text-slate-800 mb-6">Preparation of Dye Solution</h3>
+              <div class="bg-white border border-slate-200 p-6 rounded-xl">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-3">Stock Solution</h4>
+                    <p class="text-slate-700 mb-3">
+                      0.1g methyl blue dye dissolved in 100mL distilled water
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-lg">
+                      <strong>Working Solution:</strong> 2mL stock + 100mL distilled water
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-slate-800 mb-3">Test Setup</h4>
+                    <p class="text-slate-700 mb-3">
+                      4 TiO₂ hydrogel beads added to cuvette containing working solution
+                    </p>
+                    <div class="bg-teal-50 p-3 rounded-lg">
+                      <strong>Analysis:</strong> UV-Vis spectrophotometry at 3-minute intervals
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Degradation Procedure -->
+            <div>
+              <h3 class="text-2xl font-semibold text-slate-800 mb-6">Chemical Degradation Procedure</h3>
+              <div class="bg-slate-50 p-8 rounded-xl">
+                <p class="text-slate-700 mb-6">
+                  The degradation efficiency was calculated using the formula:
+                </p>
+                <div class="bg-white p-6 rounded-lg border-2 border-teal-200 mb-6">
+                  <div class="text-center">
+                    <div class="text-xl font-mono text-teal-800 mb-2">
+                      Degradation (%) = ((A₀ - Aₜ) / A₀) × 100
+                    </div>
+                    <div class="text-sm text-slate-600">
+                      Where A₀ = initial absorbance and Aₜ = absorbance at time t
+                    </div>
+                  </div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                  <div class="text-center p-4 bg-white rounded-lg">
+                    <i class="fas fa-eye text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-semibold">UV-Vis Monitoring</div>
+                    <div class="text-sm text-slate-600">Continuous absorbance measurement</div>
+                  </div>
+                  <div class="text-center p-4 bg-white rounded-lg">
+                    <i class="fas fa-clock text-2xl text-teal-600 mb-2"></i>
+                    <div class="font-semibold">Time Intervals</div>
+                    <div class="text-sm text-slate-600">3-minute analysis points</div>
+                  </div>
+                  <div class="text-center p-4 bg-white rounded-lg">
+                    <i class="fas fa-thermometer-half text-2xl text-green-600 mb-2"></i>
+                    <div class="font-semibold">Ambient Conditions</div>
+                    <div class="text-sm text-slate-600">Room temperature operation</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Results and Discussion Section -->
+      <section id="results" class="py-16 bg-slate-50">
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-3xl font-semibold text-slate-800 mb-8">Results and Discussion</h2>
+
+            <!-- Characterization -->
+            <div class="mb-12">
+              <h3 class="text-2xl font-semibold text-slate-800 mb-6">Characterization</h3>
+
+              <div class="prose prose-lg max-w-none mb-8">
+                <p class="text-lg leading-relaxed text-slate-700 mb-6">
+                  The synthesized TiO₂ hydrogel beads underwent comprehensive characterization to understand their physical and chemical properties. Macroscopically, the hydrogel beads exhibited a <strong>uniform structure and possessed good mechanical strength</strong>, indicating a robust and stable material suitable for repeated use in water treatment applications.
+                </p>
+              </div>
+
+              <!-- Characterization Images -->
+              <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-xl border border-slate-200">
+                  <h4 class="font-semibold text-slate-800 mb-4">XRD Analysis</h4>
+                  <img src="https://kimi-web-img.moonshot.cn/img/minio.scielo.br/7f83bae51507c6ee0855e3a96a9d13471f74cd40.jpg" alt="XRD spectrum of TiO₂ hydrogel showing crystal structure peaks" class="w-full h-48 object-cover rounded-lg mb-4" size="medium" aspect="wide" query="TiO2 hydrogel XRD spectrum" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+                  <p class="text-sm text-slate-600 italic">
+                    XRD spectrum of TiO₂ hydrogel doped with cobalt nitrate, showing characteristic peaks confirming crystal structure integrity.
+                  </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200">
+                  <h4 class="font-semibold text-slate-800 mb-4">SEM Morphology</h4>
+                  <img src="https://kimi-web-img.moonshot.cn/img/pubs.rsc.org/11ec461ac466758997b0ec1020a782e3370f192b.gif" alt="SEM image of porous TiO₂ hydrogel bead" class="w-full h-48 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="TiO2 hydrogel porous structure SEM" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+                  <p class="text-sm text-slate-600 italic">
+                    SEM image of TiO₂ hydrogel bead at 65× magnification, showing uniform morphology and porous structure aiding catalytic surface area.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Characterization Results -->
+              <div class="bg-gradient-to-r from-blue-50 to-teal-50 p-8 rounded-xl">
+                <h4 class="text-xl font-semibold text-slate-800 mb-6">Characterization Summary</h4>
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h5 class="font-semibold text-slate-800 mb-3">Microscopic Analysis (SEM)</h5>
+                    <ul class="space-y-2 text-slate-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mr-2 mt-1"></i>
+                        Well-dispersed TiO₂ particles throughout hydrogel network
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mr-2 mt-1"></i>
+                        Porous structure facilitating dye molecule diffusion
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mr-2 mt-1"></i>
+                        Maximum surface area availability for catalysis
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-slate-800 mb-3">Spectroscopic Analysis</h5>
+                    <ul class="space-y-2 text-slate-700">
+                      <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mr-2 mt-1"></i>
+                        FTIR confirmed functional groups of CMC, SDS, cobalt species
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mr-2 mt-1"></i>
+                        UV-Vis supported successful TiO₂ incorporation
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mr-2 mt-1"></i>
+                        XRD confirmed crystal structure integrity
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Application Results -->
+            <div>
+              <h3 class="text-2xl font-semibold text-slate-800 mb-6">Application Performance</h3>
+
+              <div class="bg-teal-50 border-l-4 border-teal-500 p-6 mb-8">
+                <p class="text-lg font-medium text-teal-800 mb-4">
+                  The application of the synthesized TiO₂ hydrogel beads demonstrated <strong>remarkable efficacy</strong> in methyl blue dye degradation.
+                </p>
+                <div class="grid md:grid-cols-3 gap-4 mt-4">
+                  <div class="text-center">
+                    <div class="text-3xl font-bold text-teal-700">91%</div>
+                    <div class="text-sm text-teal-600">Degradation Efficiency</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-3xl font-bold text-teal-700">120</div>
+                    <div class="text-sm text-teal-600">Minutes Treatment</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-3xl font-bold text-teal-700">Ambient</div>
+                    <div class="text-sm text-teal-600">Conditions</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Performance Enhancement -->
+              <div class="bg-white p-8 rounded-xl border border-slate-200">
+                <h4 class="text-xl font-semibold text-slate-800 mb-6">Cobalt Doping Enhancement Mechanism</h4>
+                <p class="text-slate-700 mb-6">
+                  The incorporation of <strong>cobalt doping</strong> played a crucial role in enhancing the rate of dye degradation through several mechanisms:
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div class="space-y-4">
+                    <div class="flex items-start">
+                      <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="fas fa-bolt text-teal-600"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-semibold text-slate-800">Improved Charge Separation</h5>
+                        <p class="text-sm text-slate-600">Cobalt acts as electron trap, preventing electron-hole recombination</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="fas fa-expand text-blue-600"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-semibold text-slate-800">Modified Surface Characteristics</h5>
+                        <p class="text-sm text-slate-600">Increased active sites for dye adsorption and degradation</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-start">
+                      <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="fas fa-exchange-alt text-purple-600"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-semibold text-slate-800">Enhanced Redox Activity</h5>
+                        <p class="text-sm text-slate-600">Co²⁺/Co³⁺ transitions facilitate efficient degradation pathways</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                        <i class="fas fa-network-wired text-green-600"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-semibold text-slate-800">Synergistic Matrix Effect</h5>
+                        <p class="text-sm text-slate-600">Hydrogel provides stable support and prevents catalyst leaching</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Conclusions Section -->
+      <section id="conclusions" class="py-16 bg-white">
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-3xl font-semibold text-slate-800 mb-8">Conclusions</h2>
+
+            <div class="prose prose-lg max-w-none space-y-6">
+              <p class="text-lg leading-relaxed text-slate-700">
+                The research successfully demonstrated the <strong>effective chemical degradation of methyl blue dye using synthesized TiO₂ hydrogel beads under ambient conditions</strong>. An <strong>impressive degradation rate of 91%</strong> was achieved, highlighting the significant catalytic potential of this system.
+              </p>
+
+              <!-- Key Findings -->
+              <div class="bg-gradient-to-r from-teal-50 to-blue-50 p-8 rounded-xl my-8">
+                <h3 class="text-xl font-semibold text-slate-800 mb-6">Key Research Findings</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                  <div class="space-y-4">
+                    <div class="flex items-start">
+                      <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                      <div>
+                        <strong>Cobalt Doping Enhancement</strong>
+                        <p class="text-sm text-slate-600">Played crucial role in enhancing catalytic activity through improved charge separation and modified surface properties</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                      <div>
+                        <strong>Hydrogel Matrix Stability</strong>
+                        <p class="text-sm text-slate-600">Proved effective platform for immobilizing TiO₂ catalyst, facilitating recovery and reuse</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-start">
+                      <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                      <div>
+                        <strong>Eco-Friendly Synthesis</strong>
+                        <p class="text-sm text-slate-600">Cost-effective method adds practical appeal for environmental applications</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                      <div>
+                        <strong>Ambient Operation</strong>
+                        <p class="text-sm text-slate-600">Degradation achieved without external energy input, reducing operational complexity</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Research Impact -->
+              <div class="bg-white border-2 border-teal-200 p-8 rounded-xl my-8">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Research Impact and Applications</h3>
+                <p class="text-slate-700 mb-6">
+                  The TiO₂ hydrogel system, particularly with cobalt doping, presents a <strong>highly promising and sustainable solution</strong> for the removal of organic dyes from wastewater, contributing significantly to environmental remediation efforts.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                  <div class="text-center p-4 bg-teal-50 rounded-lg">
+                    <i class="fas fa-industry text-2xl text-teal-600 mb-3"></i>
+                    <h4 class="font-semibold text-slate-800">Industrial Applications</h4>
+                    <p class="text-sm text-slate-600">Textile, paper, and dye manufacturing wastewater treatment</p>
+                  </div>
+                  <div class="text-center p-4 bg-blue-50 rounded-lg">
+                    <i class="fas fa-globe text-2xl text-blue-600 mb-3"></i>
+                    <h4 class="font-semibold text-slate-800">Environmental Benefits</h4>
+                    <p class="text-sm text-slate-600">Reduction of hazardous organic pollutants in water bodies</p>
+                  </div>
+                  <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <i class="fas fa-recycle text-2xl text-green-600 mb-3"></i>
+                    <h4 class="font-semibold text-slate-800">Sustainable Technology</h4>
+                    <p class="text-sm text-slate-600">Reusable catalyst system with minimal environmental impact</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Future Directions -->
+              <div class="bg-slate-50 p-8 rounded-xl">
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Future Research Directions</h3>
+                <p class="text-slate-700 mb-4">
+                  This study underscores the potential of combining semiconductor photocatalysts with hydrogel supports and metal doping strategies to develop advanced materials for water purification.
+                </p>
+                <ul class="space-y-2 text-slate-700">
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-teal-600 mr-2 mt-2"></i>
+                    Investigation of degradation kinetics and intermediate product identification
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-teal-600 mr-2 mt-2"></i>
+                    Optimization of cobalt doping concentration for maximum efficiency
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-arrow-right text-teal-600 mr-2 mt-2"></i>
+                    Scale-up studies for industrial wastewater treatment applications
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Acknowledgements Section -->
+      <section id="acknowledgements" class="py-16 bg-slate-50">
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-3xl font-semibold text-slate-800 mb-8">Acknowledgements</h2>
+
+            <div class="bg-white p-8 rounded-xl border border-slate-200">
+              <div class="prose prose-lg max-w-none">
+                <p class="text-lg leading-relaxed text-slate-700 mb-6">
+                  The author is grateful to <strong>PCSIR Peshawar</strong> and the <strong>Institute of Chemical Sciences, University of Peshawar</strong> for their invaluable support, mentorship, and access to laboratory facilities that made this research possible.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mt-8">
+                  <div class="bg-teal-50 p-6 rounded-lg">
+                    <h3 class="font-semibold text-slate-800 mb-3">Institutional Support</h3>
+                    <ul class="space-y-2 text-slate-700">
+                      <li class="flex items-center">
+                        <i class="fas fa-university text-teal-600 mr-2"></i>
+                        Institute of Chemical Sciences
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-teal-600 mr-2"></i>
+                        University of Peshawar, Pakistan
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="bg-blue-50 p-6 rounded-lg">
+                    <h3 class="font-semibold text-slate-800 mb-3">Research Facilities</h3>
+                    <ul class="space-y-2 text-slate-700">
+                      <li class="flex items-center">
+                        <i class="fas fa-microscope text-blue-600 mr-2"></i>
+                        PCSIR Peshawar Laboratories
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-flask text-blue-600 mr-2"></i>
+                        Analytical and Synthesis Facilities
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Author Contribution -->
+            <div class="mt-8 bg-gradient-to-r from-slate-50 to-teal-50 p-8 rounded-xl">
+              <h3 class="text-xl font-semibold text-slate-800 mb-4">Author Contributions</h3>
+              <div class="bg-white p-6 rounded-lg">
+                <p class="text-slate-700 mb-4">
+                  <strong>Salman Khan:</strong> Conceptualization, Synthesis, Experimentation, Data Analysis, and Manuscript Preparation
+                </p>
+                <div class="flex items-center text-sm text-slate-600">
+                  <i class="fas fa-info-circle mr-2"></i>
+                  The author declares no conflict of interest.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- References Section -->
+      <section class="py-16 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6 lg:px-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="serif text-3xl font-semibold text-slate-800 mb-8">References</h2>
+            <div class="grid gap-2 text-sm text-slate-700">
+              <div id="ref-1">[1] Fujishima, A., &amp; Honda, K. (1972). Electrochemical photolysis of water at a semiconductor electrode. <em>Nature</em>, 238, 37–38.</div>
+              <div id="ref-2">[2] Chen, X., &amp; Mao, S. S. (2007). Titanium dioxide nanomaterials: synthesis, properties, modifications, and applications. <em>Chemical Reviews</em>, 107(7), 2891–2959.</div>
+              <div id="ref-3">[3] Ahmed, S., Rasul, M. G., Martens, W. N., Brown, R., &amp; Hashib, M. A. (2011). Heterogeneous photocatalytic degradation of phenols in wastewater. <em>Desalination</em>, 261, 3–18.</div>
+              <div id="ref-4">[4] Chong, M. N., Jin, B., Chow, C. W. K., &amp; Saint, C. (2010). Recent developments in photocatalytic water treatment. <em>Water Research</em>, 44(10), 2997–3027.</div>
+              <div id="ref-5">[5] Hoffmann, M. R., Martin, S. T., Choi, W., &amp; Bahnemann, D. W. (1995). Environmental applications of semiconductor photocatalysis. <em>Chemical Reviews</em>, 95, 69–96.</div>
+              <div id="ref-6">[6] Pelaez, M., et al. (2012). A review on the visible light active titanium dioxide photocatalysts. <em>Water Research</em>, 46, 1905–1917.</div>
+              <div id="ref-7">[7] Moafi, H. F., &amp; Zanjanchi, M. A. (2011). Synthesis of Co-doped TiO₂ and its application in photocatalytic degradation of dye. <em>Journal of Alloys and Compounds</em>, 509, 4904–4912.</div>
+              <div id="ref-8">[8] Wang, C., et al. (2008). Preparation of TiO₂-coated activated carbon for removal of pollutants. <em>Applied Surface Science</em>, 254, 5003–5008.</div>
+              <div id="ref-9">[9] Mahadik, M. A., et al. (2014). Low-temperature synthesis of TiO₂ nanoparticles. <em>Ceramics International</em>, 40, 547–556.</div>
+              <div id="ref-10">[10] Asahi, R., et al. (2001). Visible-light photocatalysis in nitrogen-doped TiO₂. <em>Science</em>, 293, 269–271.</div>
+              <div id="ref-11">[11] Anpo, M., &amp; Takeuchi, M. (2003). Design of visible-light responsive TiO₂ catalysts. <em>Journal of Catalysis</em>, 216, 505–516.</div>
+              <div id="ref-12">[12] Zaleska, A. (2008). Doped-TiO₂: A review. <em>Recent Patents on Engineering</em>, 2, 157–164.</div>
+              <div id="ref-13">[13] Liu, G., et al. (2013). Understanding the doping effects on TiO₂ photocatalysts. <em>Journal of Materials Chemistry A</em>, 1, 12768–12775.</div>
+              <div id="ref-14">[14] Yu, J. C., et al. (2005). Enhancement of photocatalytic activity by metal ion doping. <em>Environmental Science &amp; Technology</em>, 39, 1175–1179.</div>
+              <div id="ref-15">[15] Zhang, Z., et al. (2008). Photocatalytic degradation of dyes using TiO₂ immobilized on activated carbon. <em>Journal of Hazardous Materials</em>, 153, 827–833.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const toc = document.querySelector('.toc-fixed');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            toc.classList.toggle('open');
+        });
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                if (window.innerWidth < 1024) {
+                    toc.classList.remove('open');
+                }
+                
+                // Update active link
+                document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active TOC link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!toc.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                toc.classList.remove('open');
+            }
+        });
+    </script>
+  
+
+</body></html>
